@@ -10,7 +10,7 @@ const TaskApp = () => {
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div data-testid="task-app" className={styles.taskApp}>
-      {/* <TaskHeader /> */}
+      <TaskHeader />
       <AddTask />
       {/* <Task /> */}
       <Tasks />

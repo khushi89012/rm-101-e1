@@ -12,7 +12,7 @@ const TaskHeader = () => {
   useEffect(() => {
     axios.get("http://localhost:8080/tasks")
     .then(res => {
-      setTaskCou(res.data);
+      setTask(res.data);
     }
     )
     .catch(err => {
@@ -21,20 +21,15 @@ const TaskHeader = () => {
     )
   }, []);
 
-
-
-
-
-
-  let totalTask = 0;
-  let unCompletedTask = 0;
+  let totalTask = task.length;
+  let unCompletedTask = task.filter(task => task.done === false).length;
 
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div data-testid="task-header" className={styles.taskHeader}>
       
-      <b data-testid="header-remaining-task">{unCompletedTask}</b>
-      <b data-testid="header-total-task">{totalTask}</b>
+      <b data-testid="header-remaining-task">Uncompleted : {unCompletedTask}</b> ||
+      <b data-testid="header-total-task">Total Task : {totalTask}</b>
     </div>
   );
 };

@@ -1,12 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Push up",
-      "done": true,
-      "count": 2
-    },
-    {
       "id": 2,
       "text": "Pull Up",
       "done": true,
@@ -31,10 +25,10 @@
       "count": 200
     },
     {
-      "id": 0.6623255045044463,
-      "text": "",
-      "done": false
+      "id": 67,
+      "text": "hello",
+      "done": false,
+      "count": 41
     }
-   
   ]
 }

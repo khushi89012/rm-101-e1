@@ -4,16 +4,21 @@ import axios from "axios";
 
 
 
-const AddTask = () => {
+const AddTask = ({count}) => {
   const [task, setTask] = useState({
-    id: Math.random()*100,
+    id: Math.round(Math.random()* 100),
     text: "",
     done: false,
+    count: Math.round(Math.random()* 100),
   });
   const [tasks, setTasks] = useState([]);
 
   const handleChange = (e) => {
-    setTask(e.target.value);
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value,
+    });
+
   }
 
   const handleClick = (e) => {
@@ -34,8 +39,11 @@ const AddTask = () => {
   // NOTE: do not delete `data-testid` key value pair
   return (
     <div className={styles.todoForm}>
-      <input data-testid="add-task-input" type="text"
+      <input
+      
+       data-testid="add-task-input" type="text"
        value = {task.text}
+       name = "text"
       onChange={handleChange} />
       <button data-testid="add-task-button" onClick={handleClick}>
         <span>Add</span>

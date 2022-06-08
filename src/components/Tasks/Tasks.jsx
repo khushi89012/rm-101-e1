@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./tasks.module.css";
 import axios from "axios";
 import { useEffect, useState} from "react";
-import TaskHeader from '../TaskHeader/TaskHeader.jsx';
+import Task from "../Task/Task.jsx";
 
 const Tasks = () => {
 const [tasks,setTasks] = useState([]);
@@ -17,9 +17,21 @@ useEffect(()=>{
     console.log(err);
   }
   )
-},[])
+},[task])
 
-let length = tasks.length;
+const handleDelete = (id) => {
+  axios.delete(`http://localhost:8080/tasks/${id}`)
+  .then(res => {
+    console.log(res);
+    setTasks(tasks.filter(task => task.id !== id));
+  }
+  )
+  .catch(err => {
+    console.log(err);
+  }
+  )
+}
+
 
 
 
@@ -28,15 +40,20 @@ let length = tasks.length;
   return (
     <>
       <ul data-testid="tasks" className={styles.tasks}>
-        {tasks.map(task => (
-          
-          <ul>
-            <li>{task.text}</li>
-            <li>{task.done}</li>
-            <li>{task.count}</li>
+        {tasks.map((item,id) => (
+          <ul key={id}>
+            <li data-testid="task">
+              {item.text}
+              </li>
+              <li data-testid="task">
+              {item.done}
+              </li>
+              <button data-testid="delete-task"
+              onClick={()=>{
+                handleDelete(item.id)
+              }}
+              >Delete</button>
           </ul>
-      
-
         ))}
 
 
