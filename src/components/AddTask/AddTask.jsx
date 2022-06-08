@@ -27,6 +27,7 @@ const AddTask = ({count}) => {
     .then(res => {
       console.log(res);
       setTasks([...tasks, res.data]);
+      window.location.reload();
     }
     )
     .catch(err => {

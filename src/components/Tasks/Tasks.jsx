@@ -17,7 +17,7 @@ useEffect(()=>{
     console.log(err);
   }
   )
-},[task])
+},[tasks])
 
 const handleDelete = (id) => {
   axios.delete(`http://localhost:8080/tasks/${id}`)
